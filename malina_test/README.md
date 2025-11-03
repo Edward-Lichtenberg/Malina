@@ -1,16 +1,26 @@
-# malina_test
+Структура дерева 
 
-A new Flutter project.
+lib/
+├── src/
+│   ├── core/              → Глобальные стили, темы, утилиты
+│   ├── data/              → Работа с данными (API, SharedPreferences)
+│   ├── domain/            → Бизнес-логика (сущности, use cases)
+│   ├── feature/           → Фичи (экраны + их логика)
+│   │   ├── welcome_screen/
+│   │   ├── add_item_screen/
+│   │   ├── cart_screen/
+│   │   └── ...
+│   ├── providers/         → Состояние (Provider, Riverpod)
+│   ├── routes/            → Навигация (auto_route)
+│   └── widgets/           → Переиспользуемые виджеты
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Проект построен по Feature-First Clean Architecture:
+domain — чистые сущности (User, Item)
+data — работа с SharedPreferences через AuthService
+feature — изолированные экраны с локальными утилитами и виджетами
+providers — реактивное состояние через ChangeNotifier
+core, widgets, routes — глобальные ресурсы
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Почему именно такая структура?
+Это обеспечивает: масштабируемость, тестируемость, читаемость и лёгкое удаление фич.
